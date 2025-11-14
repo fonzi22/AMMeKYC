@@ -36,6 +36,13 @@ class SharedFaceEncoder(nn.Module):
                 nn.Flatten()
             )
             
+        elif backbone == 'mobinetv3':
+            # MobileNetV3 Small for efficient performance
+            self.backbone = MobileNetV3Small(
+                num_classes=512,
+                width_mult=0.75  # Reduce width for mobile
+            )            
+            
         elif backbone == 'efficientnet-b0':
             # EfficientNet-B0 for better accuracy-efficiency trade-off
             self.backbone = EfficientNetB0(
