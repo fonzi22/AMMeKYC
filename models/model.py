@@ -41,3 +41,8 @@ class DualBranchDepthAwareFAS(nn.Module):
             input_dim=config.temporal_dim,
             num_classes=2  # real/fake or multi-class attacks
         )
+
+video = torch.rand(1, 16, 3 , 112, 112)  # (Batch size, num frames, Channels, Height, Width)
+face_image = torch.rand(1, 3 , 112, 112)  # (Batch size, Channels, Height, Width)
+model = DualBranchDepthAwareFAS(config)
+model(video, face_image) -> logits (real / fake), depth_map (Height, Width)
